@@ -10,8 +10,8 @@ import java.util.List;
 public class ThinkerService implements Service<Thinker> {
     private Repository repository;
 
-    public ThinkerService() {
-        repository = new ThinkerRepository();
+    public ThinkerService(ThinkerRepository thinkerRepository) {
+        this.repository = thinkerRepository;
     }
 
     @Override

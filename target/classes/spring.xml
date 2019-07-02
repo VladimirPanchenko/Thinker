@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+
+    <bean id="thinker" class="ru.itprogram.entity.Thinker" scope="prototype"/>
+    <bean id="welcomePrint" class="ru.itprogram.view.WelcomePrint"/>
+    <bean id="serviceMenu" class="ru.itprogram.view.menu.ServiceMenu">
+        <constructor-arg ref="deleteCommand"/>
+        <constructor-arg ref="printCommand"/>
+        <constructor-arg ref="saveCommand"/>
+        <constructor-arg ref="arrayList"/>
+    </bean>
+
+    <bean id="thinkerPrint" class="ru.itprogram.view.ThinkerPrint"/>
+
+    <bean id="deleteCommand" class="ru.itprogram.view.menu.impl.DeleteCommand">
+        <constructor-arg ref="thinkerService"/>
+    </bean>
+    <bean id="printCommand" class="ru.itprogram.view.menu.impl.PrintCommand">
+        <constructor-arg ref="thinkerService"/>
+        <constructor-arg ref="thinkerPrint"/>
+    </bean>
+    <bean id="saveCommand" class="ru.itprogram.view.menu.impl.SaveCommand">
+        <constructor-arg ref="thinkerService"/>
+        <constructor-arg ref="thinker"/>
+    </bean>
+    <bean id="thinkerService" class="ru.itprogram.service.impl.ThinkerService">
+        <constructor-arg ref="thinkerRepository"/>
+    </bean>
+    <bean id="thinkerRepository" class="ru.itprogram.repository.impl.ThinkerRepository"/>
+    <bean id="arrayList" class="java.util.ArrayList" scope="prototype">
+
+    </bean>
+
+
+
+
+</beans>

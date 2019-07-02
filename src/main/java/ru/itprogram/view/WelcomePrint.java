@@ -8,7 +8,6 @@ public class WelcomePrint {
 
     public void welcomeFirst() {
         System.out.println(WELCOME);
-//        commandPrint();
     }
 
     public void welcome() {

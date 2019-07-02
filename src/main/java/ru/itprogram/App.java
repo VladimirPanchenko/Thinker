@@ -1,5 +1,7 @@
 package ru.itprogram;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.itprogram.view.WelcomePrint;
 import ru.itprogram.view.menu.Command;
 import ru.itprogram.view.menu.ServiceMenu;
@@ -12,9 +14,10 @@ public class App {
     public static int commandLine;
 
     public static void main( String[] args ) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         Scanner scanner = new Scanner(System.in);
-        WelcomePrint welcomePrint = new WelcomePrint();
-        ServiceMenu serviceMenu = new ServiceMenu();
+        WelcomePrint welcomePrint = (WelcomePrint) context.getBean("welcomePrint");
+        ServiceMenu serviceMenu = (ServiceMenu) context.getBean("serviceMenu");
 
         welcomePrint.welcomeFirst();
         while (true) {

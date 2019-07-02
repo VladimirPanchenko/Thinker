@@ -8,9 +8,11 @@ import ru.itprogram.view.menu.Command;
 public class PrintCommand implements Command {
     private final String KEY_COMMAND = "1";
     private Service service;
+    private ThinkerPrint thinkerPrint;
 
-    public PrintCommand() {
-        service = new ThinkerService();
+    public PrintCommand(ThinkerService thinkerService, ThinkerPrint thinkerPrint) {
+        this.service = thinkerService;
+        this.thinkerPrint = thinkerPrint;
     }
 
     @Override
@@ -20,7 +22,6 @@ public class PrintCommand implements Command {
 
     @Override
     public void run() {
-        ThinkerPrint thinkerPrint = new ThinkerPrint();
         thinkerPrint.print(service.getThinkers());
     }
 }

@@ -11,9 +11,11 @@ import java.util.Scanner;
 public class SaveCommand implements Command {
     private final String KEY_COMMAND = "2";
     private Service service;
+    private Thinker thinker;
 
-    public SaveCommand() {
-        service = new ThinkerService();
+    public SaveCommand(ThinkerService thinkerService, Thinker thinker) {
+        this.service = thinkerService;
+        this.thinker = thinker;
     }
 
     @Override
@@ -28,7 +30,10 @@ public class SaveCommand implements Command {
         String title = scanner.nextLine();
         System.out.println("Сформулируй свою мысль в виде текста");
         String text = scanner.nextLine();
-        Thinker thinker = new Thinker(0, title, text, LocalDateTime.now());
+        thinker.setId(0);
+        thinker.setTitle(title);
+        thinker.setText(text);
+        thinker.setTimeOfCreation(LocalDateTime.now());
         service.addThinker(thinker);
     }
 }

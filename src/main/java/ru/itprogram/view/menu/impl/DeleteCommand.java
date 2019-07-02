@@ -12,8 +12,8 @@ public class DeleteCommand implements Command {
     private final String KEY_COMMAND = "3";
     private Service service;
 
-    public DeleteCommand() {
-        service = new ThinkerService();
+    public DeleteCommand(ThinkerService thinkerService) {
+        this.service = thinkerService;
     }
 
     @Override

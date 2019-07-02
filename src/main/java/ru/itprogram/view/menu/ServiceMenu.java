@@ -10,11 +10,11 @@ import java.util.List;
 public class ServiceMenu {
     private List<Command> commandList;
 
-    public ServiceMenu() {
-        commandList = new ArrayList<>();
-        commandList.add(new DeleteCommand());
-        commandList.add(new PrintCommand());
-        commandList.add(new SaveCommand());
+    public ServiceMenu(DeleteCommand deleteCommand, PrintCommand printCommand, SaveCommand saveCommand, ArrayList commandList) {
+        this.commandList = commandList;
+        commandList.add(deleteCommand);
+        commandList.add(printCommand);
+        commandList.add(saveCommand);
     }
 
     public List<Command> getCommandList() {
